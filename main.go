@@ -1,7 +1,7 @@
 package main
 
 import (
-  "bme280_mtqq_provider/bme280"
+  "bme280_mqtt_provider/bme280"
   "log"
   "os"
   "time"
@@ -15,7 +15,7 @@ func main() {
 
   topic := flag.String( "topic", "", "The topic name to which to publish" )
   broker := flag.String( "broker", "", "The broker URI. ex: tcp://10.10.1.1:1883" )
-  user := flag.String( "user", "", "The User (optional)" )
+  user := flag.String( "user", "", "The user (optional)" )
 	password := flag.String( "password", "", "The password (optional)" )
   id := flag.String( "id", "!!!ID NOT SET!!!", "The ClientID" )
   period := flag.Uint64( "period", 60, "Sensor reading period in seconds (default: 60)" )

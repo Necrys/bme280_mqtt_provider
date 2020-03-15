@@ -1,4 +1,4 @@
-module bme280_mtqq_provider
+module bme280_mqtt_provider
 
 go 1.13
 

@@ -1,22 +1,22 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:          bme280mtqq
+# Provides:          bme280mqtt
 # Required-Start:    $local_fs $network $named $time $syslog
 # Required-Stop:     $local_fs $network $named $time $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Description:       MTQQ data publisher of bme280 readings
+# Description:       MQTT data publisher of bme280 readings
 ### END INIT INFO
 
-SCRIPT=/home/pi/src/bme280_mtqq_provider/bme280_mtqq_provider
+SCRIPT=/home/pi/src/bme280_mqtt_provider/bme280_mqtt_provider
 RUNAS=pi
 ID='!!!ID not set, check init.d script!!!'
 TOPIC=sensors
 BROKER=''
 PERIOD=60
 
-PIDFILE=/var/run/bme280mtqq.pid
-LOGFILE=/var/log/bme280mtqq.log
+PIDFILE=/var/run/bme280mqtt.pid
+LOGFILE=/var/log/bme280mqtt.log
 
 start() {
   if [ -f /var/run/$PIDFILE ] && kill -0 $(cat /var/run/$PIDFILE); then
@@ -49,7 +49,7 @@ uninstall() {
     stop
     rm -f "$PIDFILE"
     echo "Notice: log file is not be removed: '$LOGFILE'" >&2
-    update-rc.d -f bme280mtqq remove
+    update-rc.d -f bme280mqtt remove
     rm -fv "$0"
   fi
 }
